@@ -1,0 +1,38 @@
+model_name: ByteDance/Ouro-1.4B
+python_version: py311
+requirements:
+  - vllm==0.5.4
+  - transformers
+  - torch
+  - accelerate
+  - tokenizers
+  - pyyaml
+  - redis
+  - loguru
+model_cache:
+  - repo_id: ByteDance/Ouro-1.4B
+    revision: main
+    use_volume: true
+    volume_folder: ouro-1.4b
+    runtime_secret_name: hf_access_token
+    kind: hf
+runtime:
+  predict_concurrency: 256
+resources:
+  accelerator: L4
+  cpu: "4"
+  memory: 16Gi
+  use_gpu: true
+build_commands: []
+environment_variables:
+  HF_HUB_DISABLE_TELEMETRY: "1"
+  # TORCHDYNAMO_VERBOSE₹: "1"
+  TORCH_COMPILE_DISABLE: "1"
+  VLLM_LOGGING_LEVEL: INFO
+  LOG_LEVEL: INFO
+  REDIS_URL: redis://localhost:6379
+external_package_dirs: []
+model_metadata: {}
+secrets:
+  hf_access_token: null
+system_packages: []
