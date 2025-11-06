@@ -19,9 +19,9 @@ model_cache:
 runtime:
   predict_concurrency: 256
 resources:
-  accelerator: L4
+  accelerator: H100
   cpu: "4"
-  memory: 16Gi
+  memory: 40Gi
   use_gpu: true
 build_commands: []
 environment_variables:

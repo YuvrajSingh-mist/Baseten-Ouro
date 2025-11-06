@@ -91,13 +91,10 @@ class Model:
         # Get tokens from secrets
         hf_token = self._secrets.get("hf_access_token")
 
-        # Initialize Redis for caching (optional). Do not expect a password here;
-        # REDIS_URL should include any auth if required (for local testing you can
-        # embed the password in the URL, but do not store passwords in code).
+      
         redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
         try:
-            # Always connect using the provided URL. If your Redis requires a
-            # password, put it in the URL (redis://:password@host:port).
+            
             self._redis_client = redis.from_url(redis_url)
 
             # Test connection
